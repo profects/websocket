@@ -124,7 +124,7 @@ func (u *Upgrader) Upgrade(w http.ResponseWriter, r *http.Request, responseHeade
 	const badHandshake = "websocket: the client is not using the websocket protocol: "
 
 	if !tokenListContainsValue(r.Header, "Connection", "Upgrade") {
-		return u.returnError(w, r, http.StatusBadRequest, badHandshake+"'upgrade' token not found in 'Connection' header")
+		return u.returnError(w, r, http.StatusBadRequest, badHandshake+"'Upgrade' token not found in 'Connection' header: %v", r.Header)
 	}
 
 	if !tokenListContainsValue(r.Header, "Upgrade", "websocket") {
@@ -321,7 +321,7 @@ func Subprotocols(r *http.Request) []string {
 // IsWebSocketUpgrade returns true if the client requested upgrade to the
 // WebSocket protocol.
 func IsWebSocketUpgrade(r *http.Request) bool {
-	return tokenListContainsValue(r.Header, "Connection", "upgrade") &&
+	return tokenListContainsValue(r.Header, "Connection", "Upgrade") &&
 		tokenListContainsValue(r.Header, "Upgrade", "websocket")
 }
 
