@@ -1,1 +1,1 @@
-module github.com/gorilla/websocket
+module github.com/profects/websocket

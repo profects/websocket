@@ -321,7 +321,7 @@ func Subprotocols(r *http.Request) []string {
 // IsWebSocketUpgrade returns true if the client requested upgrade to the
 // WebSocket protocol.
 func IsWebSocketUpgrade(r *http.Request) bool {
-	return tokenListContainsValue(r.Header, "Connection", "upgrade") &&
+	return tokenListContainsValue(r.Header, "Connection", "Upgrade") &&
 		tokenListContainsValue(r.Header, "Upgrade", "websocket")
 }
 
